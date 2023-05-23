@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Android 13 Update mit OneUI 5</title>
+    <title>Samsung Fake Update Screen</title>
     <style>
         html, body {
             margin: 0;
             padding: 0;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
         }
 
         #update-screen {
-            background-color: #f2f2f2;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             height: 100vh;
-            font-family: Arial, sans-serif;
+            padding: 20px;
         }
 
         #update-logo {
@@ -58,11 +59,11 @@
 <body>
     <div id="update-screen">
         <div id="update-logo"></div>
-        <div id="update-text">Android 13 Update mit OneUI 5 wird installiert...</div>
+        <div id="update-text">Samsung Galaxy Update</div>
         <div id="progress-bar">
             <div class="progress"></div>
         </div>
-        <div id="progress-text">0%</div>
+        <div id="progress-text">Updating...</div>
     </div>
 
     <script>
@@ -76,10 +77,10 @@
                 if (width > 100) {
                     width = 100;
                     clearInterval(intervalId);
+                    progressText.textContent = 'Update completed!';
                 }
 
                 progressBar.style.width = width + '%';
-                progressText.textContent = width.toFixed(0) + '%';
             }, 1000);
         }
 
