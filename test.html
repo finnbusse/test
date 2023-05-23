@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Android 13 Update mit OneUI 5</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #update-screen {
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        #update-logo {
+            width: 150px;
+            height: 150px;
+            background-image: url('samsung_logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+
+        #update-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #progress-bar {
+            width: 80%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #progress-bar .progress {
+            height: 100%;
+            width: 0;
+            background-color: #00a8e0;
+            transition: width 1s linear;
+        }
+
+        #progress-text {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="update-screen">
+        <div id="update-logo"></div>
+        <div id="update-text">Android 13 Update mit OneUI 5 wird installiert...</div>
+        <div id="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div id="progress-text">0%</div>
+    </div>
+
+    <script>
+        function updateProgress() {
+            var progressBar = document.querySelector('.progress');
+            var progressText = document.getElementById('progress-text');
+            var width = 0;
+            var intervalId = setInterval(function() {
+                width += Math.random() * 10;
+
+                if (width > 100) {
+                    width = 100;
+                    clearInterval(intervalId);
+                }
+
+                progressBar.style.width = width + '%';
+                progressText.textContent = width.toFixed(0) + '%';
+            }, 1000);
+        }
+
+        updateProgress();
+    </script>
+</body>
+</html>
